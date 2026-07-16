@@ -37,6 +37,8 @@ from one scope is never silently reused in another.
 Credentials Data Model 2.0. Signing and verification remain adapters so callers
 can use the W3C JOSE/COSE Recommendation, Data Integrity proofs, SD-JWT, a DID
 stack, or an enterprise trust service without provider lock-in.
+The package publishes a stable remote JSON-LD context at
+<https://absolutejs.github.io/agents/contexts/reputation/v1.json>.
 
 Standards:
 

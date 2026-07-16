@@ -4,7 +4,7 @@ import type {
 } from "./types";
 
 export const AGENT_REPUTATION_CONTEXT =
-  "https://absolutejs.github.io/agents/contexts/reputation/v1" as const;
+  "https://absolutejs.github.io/agents/contexts/reputation/v1.json" as const;
 
 export const createAgentReputationCredential = (input: {
   assessment: AgentReputationAssessment;
