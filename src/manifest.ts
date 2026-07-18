@@ -3,6 +3,23 @@ import { Type } from "@sinclair/typebox";
 
 export const manifest = defineManifest<Record<string, never>>()({
   contract: 2,
+  discovery: {
+    audiences: ["agent-hosts", "trust-registries"],
+    intents: [
+      "assess agent reputation",
+      "issue agent reputation evidence",
+      "verify reputation credentials",
+    ],
+    keywords: [
+      "agents",
+      "reputation",
+      "evidence",
+      "credentials",
+      "revocation",
+      "trust",
+    ],
+    protocols: ["W3C Verifiable Credentials 2.0"],
+  },
   identity: {
     accent: "#eab308",
     category: "ai",
