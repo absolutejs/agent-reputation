@@ -10,13 +10,14 @@ uses a neutral Bayesian prior, time decay, configurable issuer trust, and a cap
 per issuer so one party cannot inflate a score by repeating claims.
 
 ```ts
+import { createAgentReputation } from "@absolutejs/agent-reputation";
 import {
-  createAgentReputation,
-  createPostgresAgentReputationStore,
-} from "@absolutejs/agent-reputation";
+  agentReputationDrizzleSchema,
+  createDrizzleAgentReputationStore,
+} from "@absolutejs/agent-reputation/drizzle";
 
 const reputation = createAgentReputation({
-  store: createPostgresAgentReputationStore({ client: postgres }),
+  store: createDrizzleAgentReputationStore({ db }),
   verifyEvidence: (evidence) => verifyIssuerReceipt(evidence),
   issuerWeights: { "did:web:certifier.example": 1 },
 });
@@ -27,6 +28,11 @@ const assessment = await reputation.assess(
   "calendar.scheduling",
 );
 ```
+
+Include `agentReputationDrizzleSchema` in the host's normal Drizzle migrations.
+The package-owned RC4 store works with Postgres providers including Neon,
+generates insert/select TypeBoxes, and uses a Bun-portable JSONB codec. The
+structural SQL adapter remains available for compatibility.
 
 Unsigned or unverifiable evidence is denied by default. `allowUnverified` is an
 explicit local-development escape hatch. Revoked and expired evidence is never
