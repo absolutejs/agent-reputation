@@ -1,6 +1,6 @@
 {
   "name": "@absolutejs/agent-reputation",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Evidence-based scoped AI agent reputation with W3C Verifiable Credentials 2.0 adapters.",
   "type": "module",
   "license": "MIT",
@@ -39,7 +39,21 @@
     "LICENSE"
   ],
   "absolutejs": {
-    "manifestContract": 2
+    "manifestContract": 2,
+    "runtimePeers": {
+      "drizzle-orm": {
+        "artifactImports": [
+          "drizzle-orm",
+          "drizzle-orm/pg-core"
+        ],
+        "buildExternals": [
+          "drizzle-orm"
+        ],
+        "optional": true,
+        "range": ">=1.0.0-rc.4 <2",
+        "tested": "1.0.0-rc.4"
+      }
+    }
   },
   "scripts": {
     "format": "prettier --write \"./**/*.{ts,json,md,yml}\"",
@@ -49,7 +63,7 @@
     "check:package": "bun run format && bun run typecheck && bun run test && bun run build"
   },
   "dependencies": {
-    "@absolutejs/manifest": "^0.4.0",
+    "@absolutejs/manifest": "^0.7.1",
     "@sinclair/typebox": "^0.34.0",
     "drizzle-typebox": "1.0.0-beta.14-a36c63d"
   },
